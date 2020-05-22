@@ -473,7 +473,7 @@ while 1:
     sheet1.write(0, 0, "column_number")
     sheet1.write(0, 1, "total_difference")
     sheet1.write(0, 2, "average_difference")
-
+    col = 1
     status = True
     string1 = input("input the first sequence or type quit: ").strip().upper()
     if string1 == "QUIT":
@@ -504,21 +504,28 @@ while 1:
             continue
         else:
             other_strings.append(string_in)
-        k = 1
+
     for i in range(0, len(string1)):
         total_col = 1
         total_difference = 0
-        while string1[i] == '-':
-            i += 1
-        if string1[i] == '-':
-            continue
-        for string2 in other_strings:
-            j = i
-            while string2[j] == '-':
+        k = i
+        j = i
+        if j == 0:
+            while string1[j] == '-':
                 j += 1
-            total_difference += sneath_compare(string1[i], string2[j])
+
+        if string1[j] == '-':
+            continue
+
+        for string2 in other_strings:
+            if k == 0:
+                while string2[k] == '-':
+                    k += 1
+            if string2[k] == '-':
+                continue
+            total_difference += sneath_compare(string1[j], string2[k])
             total_col += 1
-            j += 1
+            k += 1
 
             # current_difference = sneath_compare(string1[i], string2[i])
             # print("difference between ", string1[i], "and ", string2[i], "is", current_difference)
@@ -527,8 +534,8 @@ while 1:
             "he average is {}".format(
                 i,
                 total_difference, total_col, total_difference / total_col))
-        sheet1.write(k, 0, k)
-        sheet1.write(k, 1, total_difference)
-        sheet1.write(k, 2, total_difference / total_col)
-        k += 1
+        sheet1.write(col, 0, k)
+        sheet1.write(col, 1, total_difference)
+        sheet1.write(col, 2, total_difference / total_col)
+        col += 1
     book.save("trial.xls")
