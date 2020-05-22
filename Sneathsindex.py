@@ -1,4 +1,4 @@
-import xlwt as xlwt
+import xlwt
 
 
 def sneath_compare(a, b):
