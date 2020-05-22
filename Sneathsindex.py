@@ -1,10 +1,14 @@
-def sneathcompare(a, b):
+import xlwt as xlwt
+
+
+def sneath_compare(a, b):
     return conversion_dict[(a, b)]
 
 
-dna_set = {"G", "A", "L", "M", "F", "W", "K", "Q", "E", "S", "P", 'V', 'I', 'C', 'Y', 'H', 'R', 'N', 'D', 'T'}
+dna_set = {"G", "A", "L", "M", "F", "W", "K", "Q", "E", "S", "P", 'V', 'I', 'C', 'Y', 'H', 'R', 'N', 'D', 'T', '-'}
 
-conversion_dict = {('L', 'I'): 5,
+conversion_dict = {('L', 'L'): 0,
+                   ('L', 'I'): 5,
                    ('L', 'V'): 9,
                    ('L', 'G'): 24,
                    ('L', 'A'): 15,
@@ -24,6 +28,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('L', 'W'): 30,
                    ('L', 'H'): 25,
                    #
+                   ('I', 'L'): 0,
                    ('I', 'I'): 0,
                    ('I', 'V'): 7,
                    ('I', 'G'): 25,
@@ -62,6 +67,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('I', 'W'): 34,
                    ('I', 'H'): 28,
                    #
+                   ('V', 'L'): 0,
                    ('V', 'I'): 0,
                    ('V', 'V'): 0,
                    ('V', 'G'): 19,
@@ -82,6 +88,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('V', 'W'): 37,
                    ('V', 'H'): 31,
                    #
+                   ('G', 'L'): 0,
                    ('G', 'I'): 0,
                    ('G', 'V'): 0,
                    ('G', 'G'): 0,
@@ -102,6 +109,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('G', 'W'): 39,
                    ('G', 'H'): 34,
                    #
+                   ('A', 'L'): 0,
                    ('A', 'I'): 0,
                    ('A', 'V'): 0,
                    ('A', 'G'): 0,
@@ -122,6 +130,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('A', 'W'): 36,
                    ('A', 'H'): 29,
                    #
+                   ('P', 'L'): 0,
                    ('P', 'I'): 0,
                    ('P', 'V'): 0,
                    ('P', 'G'): 0,
@@ -143,6 +152,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('P', 'H'): 36,
 
                    #
+                   ('Q', 'L'): 0,
                    ('Q', 'I'): 0,
                    ('Q', 'V'): 0,
                    ('Q', 'G'): 0,
@@ -163,6 +173,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('Q', 'W'): 37,
                    ('Q', 'H'): 36,
                    #
+                   ('N', 'L'): 0,
                    ('N', 'I'): 0,
                    ('N', 'V'): 0,
                    ('N', 'G'): 0,
@@ -183,6 +194,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('N', 'W'): 32,
                    ('N', 'H'): 24,
                    #
+                   ('M', 'L'): 0,
                    ('M', 'I'): 0,
                    ('M', 'V'): 0,
                    ('M', 'G'): 0,
@@ -203,6 +215,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('M', 'W'): 31,
                    ('M', 'H'): 30,
                    #
+                   ('M', 'L'): 0,
                    ('M', 'I'): 0,
                    ('M', 'V'): 0,
                    ('M', 'G'): 0,
@@ -223,6 +236,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('M', 'W'): 31,
                    ('M', 'H'): 30,
                    #
+                   ('T', 'L'): 0,
                    ('T', 'I'): 0,
                    ('T', 'V'): 0,
                    ('T', 'G'): 0,
@@ -243,6 +257,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('T', 'W'): 38,
                    ('T', 'H'): 34,
                    #
+                   ('S', 'L'): 0,
                    ('S', 'I'): 0,
                    ('S', 'V'): 0,
                    ('S', 'G'): 0,
@@ -263,6 +278,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('S', 'W'): 35,
                    ('S', 'H'): 28,
                    #
+                   ('C', 'L'): 0,
                    ('C', 'I'): 0,
                    ('C', 'V'): 0,
                    ('C', 'G'): 0,
@@ -283,6 +299,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('C', 'W'): 37,
                    ('C', 'H'): 31,
                    #
+                   ('E', 'L'): 0,
                    ('E', 'I'): 0,
                    ('E', 'V'): 0,
                    ('E', 'G'): 0,
@@ -303,6 +320,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('E', 'W'): 43,
                    ('E', 'H'): 27,
                    #
+                   ('D', 'L'): 0,
                    ('D', 'I'): 0,
                    ('D', 'V'): 0,
                    ('D', 'G'): 0,
@@ -323,6 +341,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('D', 'W'): 45,
                    ('D', 'H'): 35,
                    #
+                   ('K', 'L'): 0,
                    ('K', 'I'): 0,
                    ('K', 'V'): 0,
                    ('K', 'G'): 0,
@@ -343,6 +362,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('K', 'W'): 34,
                    ('K', 'H'): 27,
                    #
+                   ('R', 'L'): 0,
                    ('R', 'I'): 0,
                    ('R', 'V'): 0,
                    ('R', 'G'): 0,
@@ -363,6 +383,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('R', 'W'): 36,
                    ('R', 'H'): 31,
                    #
+                   ('Y', 'L'): 0,
                    ('Y', 'I'): 0,
                    ('Y', 'V'): 0,
                    ('Y', 'G'): 0,
@@ -383,6 +404,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('Y', 'W'): 21,
                    ('Y', 'H'): 23,
                    #
+                   ('F', 'L'): 0,
                    ('F', 'I'): 0,
                    ('F', 'V'): 0,
                    ('F', 'G'): 0,
@@ -403,6 +425,7 @@ conversion_dict = {('L', 'I'): 5,
                    ('F', 'W'): 13,
                    ('F', 'H'): 18,
                    #
+                   ('W', 'L'): 0,
                    ('W', 'I'): 0,
                    ('W', 'V'): 0,
                    ('W', 'G'): 0,
@@ -422,29 +445,90 @@ conversion_dict = {('L', 'I'): 5,
                    ('W', 'F'): 0,
                    ('W', 'W'): 0,
                    ('W', 'H'): 25,
+                   #
+                   ('H', 'L'): 0,
+                   ('H', 'I'): 0,
+                   ('H', 'V'): 0,
+                   ('H', 'G'): 0,
+                   ('H', 'A'): 0,
+                   ('H', 'P'): 0,
+                   ('H', 'Q'): 0,
+                   ('H', 'N'): 0,
+                   ('H', 'M'): 0,
+                   ('H', 'T'): 0,
+                   ('H', 'S'): 0,
+                   ('H', 'C'): 0,
+                   ('H', 'E'): 0,
+                   ('H', 'D'): 0,
+                   ('H', 'K'): 0,
+                   ('H', 'R'): 0,
+                   ('H', 'Y'): 0,
+                   ('H', 'F'): 0,
+                   ('H', 'W'): 0,
+                   ('H', 'H'): 0,
                    }
 while 1:
-    string1 = input("input the first sequence or type quit").upper()
-    if string1 == "quit":
+    book = xlwt.Workbook(encoding="utf-8")
+    sheet1 = book.add_sheet("Sheet 1")
+    sheet1.write(0, 0, "column_number")
+    sheet1.write(0, 1, "total_difference")
+    sheet1.write(0, 2, "average_difference")
+
+    status = True
+    string1 = input("input the first sequence or type quit: ").strip().upper()
+    if string1 == "QUIT":
         break
-    string2 = input("input the second sequence").upper()
-    if string2 == "quit":
-        break
-    total = 0
-    difference = 0
+    other_strings = []
+    string_in = ""
+    length1 = len(string1)
     for i in set(string1):
         if i not in dna_set:
             print("input 1 is not correct")
-            break
-    for i in string2:
-        if i not in dna_set:
-            print("input 2 is not correct")
-            break
-    if len(string1) != len(string2):
-        print("inputs are not of equal lengths")
-        break
+            status = False
+    if status is not True:
+        continue
+    while string_in != "QUIT":
+        incorrect = False
+        string_in = input('enter a row: ').upper()
+        if string_in == "QUIT":
+            continue
+        if len(string_in) != length1:
+            print("input is not of same length")
+            incorrect = True
+        for i in set(string_in):
+            if i not in dna_set:
+                print("input is not correct")
+                incorrect = True
+                break
+        if incorrect:
+            continue
+        else:
+            other_strings.append(string_in)
+        k = 1
     for i in range(0, len(string1)):
-        difference += sneathcompare(string1[i], string2[i])
-        total += 1
-    print("the total difference is {}, the total number of amino acids is {}, the average is {}".format(
-        difference, total, difference/total))
+        total_col = 1
+        total_difference = 0
+        while string1[i] == '-':
+            i += 1
+        if string1[i] == '-':
+            continue
+        for string2 in other_strings:
+            j = i
+            while string2[j] == '-':
+                j += 1
+            total_difference += sneath_compare(string1[i], string2[j])
+            total_col += 1
+            j += 1
+
+            # current_difference = sneath_compare(string1[i], string2[i])
+            # print("difference between ", string1[i], "and ", string2[i], "is", current_difference)
+        print(
+            "the total difference for column {} is {}, the total number of amino acids is {}, t"
+            "he average is {}".format(
+                i,
+                total_difference, total_col, total_difference / total_col))
+        sheet1.write(k, 0, k)
+        sheet1.write(k, 1, total_difference)
+        sheet1.write(k, 2, total_difference / total_col)
+        k += 1
+    book.save("trial.xls")
